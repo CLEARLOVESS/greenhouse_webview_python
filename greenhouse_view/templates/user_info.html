@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>温室大棚监控系统用户中心</title>
+{#	<link rel="stylesheet" type="text/css" href="css/reset.css">#}
+	<style type="text/css">
+        /* 将标签默认的间距设为0   */
+        body,ul,p,h1,h2,h3,h4,h5,h6,dl,dd,input,select,form{
+            margin:0;padding:0;
+        }
+        /* 让h标签继承body内设置的字体大小 */
+        h1,h2,h3,h4,h5,h6{
+            font-size:100%;
+        }
+        /* 去掉默认的项目图标 */
+        ul{
+            list-style:none;
+        }
+        em{
+            font-style:normal;
+        }
+        a{
+            text-decoration:none;
+        }
+		.title{
+			/*顶部的蓝色条条*/
+			height: 50px;
+			background-color: rgb(46,121,255);
+			box-shadow: 0px 0px 5px 1px rgb(178,221,240);
+		}
+		.title div{
+			display: inline-block;
+		}
+		.logo{
+			/*温室大棚监控系统文字*/
+			font-size: 22px;
+			color: white;
+			line-height: 50px;
+			margin-left: 20px;
+		}
+
+		.title div a{
+			/*个人中心和管理员的文字*/
+			color: white;
+			font-size: 22px;
+		}
+		.user_info{
+			/*个人中心*/
+			line-height: 50px;
+			float: right;
+			margin-right: 200px;
+			margin-left: 50px;
+		}
+		.admin{
+			/*管理员*/
+			line-height: 50px;
+			float: right;
+			margin-right: 50px;
+			margin-left: 50px;	
+		}
+
+/*用户信息-------------------------*/
+		.user{
+			margin-top: 5%;
+			margin-left: 20%;
+		}
+		.user div{
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+		.user span{
+			margin-left: 100px;
+		}
+		
+		.change_password{
+			/*修改密码按钮*/
+			background-color: rgb(221,80,68);
+			text-align: center;
+			line-height: 50px;
+			color: white;
+			font-size: 20px;
+			padding: 10px 70px;
+			border-radius: 5px;
+			border: 1px solid grey;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<div class="title">
+		<!-- 跳转到index -->
+		<a href="/index" class="logo">温室大棚监控系统</a>
+		<div class="user_info"> <a href="/user_info">个人中心</a> </div>
+		<div class="admin"> <a href="/admin">管理员</a> </div>
+	</div>
+
+	<div class="user">
+		<div>用户名--         <span>{{ username }}</span>         </div>
+		<div>密码--         <span>{{ password }}</span>     </div>
+		<div>土地--        <span>1</span>            </div>
+		<div>节点--          <span>1</span>           </div>
+
+		<a href="/change_password" class="change_password">修改密码</a>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>温室大棚监控系统首页</title>
+{#	<link rel="stylesheet" type="text/css" href="css/reset.css">#}
+	<style type="text/css">
+        /* 将标签默认的间距设为0   */
+        body,ul,p,h1,h2,h3,h4,h5,h6,dl,dd,input,select,form{
+            margin:0;padding:0;
+        }
+        /* 让h标签继承body内设置的字体大小 */
+        h1,h2,h3,h4,h5,h6{
+            font-size:100%;
+        }
+        /* 去掉默认的项目图标 */
+        ul{
+            list-style:none;
+        }
+        em{
+            font-style:normal;
+        }
+        a{
+            text-decoration:none;
+        }
+		.title{
+			/*顶部的蓝色条条*/
+			height: 50px;
+			background-color: rgb(46,121,255);
+			box-shadow: 0px 0px 5px 1px rgb(178,221,240);
+		}
+		.title div{
+			display: inline-block;
+		}
+		.logo{
+			/*温室大棚监控系统文字*/
+			font-size: 22px;
+			color: white;
+			line-height: 50px;
+			margin-left: 20px;
+		}
+
+		.title div a{
+			/*个人中心和管理员的文字*/
+			color: white;
+			font-size: 22px;
+		}
+		.user_info{
+			/*个人中心*/
+			line-height: 50px;
+			float: right;
+			margin-right: 200px;
+			margin-left: 50px;
+		}
+		.admin{
+			/*管理员*/
+			line-height: 50px;
+			float: right;
+			margin-right: 50px;
+			margin-left: 50px;	
+		}
+
+		/*--------------左边-----------------*/
+		.left_block{
+			position: absolute;
+			width: 20%;
+			height: 1000px;
+			float: left;
+			background-color: white;
+			/*225 228 232*/
+			border: 0px;
+			border-right: 2px solid rgb(225,228,232);
+		}
+		.left_block .post_id{
+			/*请选择端口号*/
+			font-size: 20px;
+			color: green;
+			text-align: center;
+			margin-top: 100px;
+			margin-bottom: 50px;
+		}
+		.COM{
+			width: 275px;
+			text-align: center;
+			border: 0px;
+			color: grey;
+			border-bottom: 1px solid grey;
+			outline: none;
+			font-size: 22px;
+			margin-left: 50px;
+		}
+		.start{
+			/*开始按钮*/
+			width:250px; 
+			cursor: pointer;
+			border: 0;
+			background-color: rgb(23,160,93); 
+			color: white;
+			font-size: 16px;
+			line-height: 32px;
+			margin-left: 60px;
+			margin-top: 100px;
+		}
+		.end{
+			/*结束按钮*/
+			width:250px; 
+			cursor: pointer;
+			border: 0;
+			background-color: rgb(221,80,68);
+			color: white;
+			font-size: 16px;
+			line-height: 32px;
+			margin-left: 60px;
+			margin-top: 100px;
+		}
+
+		/*-------------------主窗口-------------------*/
+		/*246 248 250*/
+		.main_block{
+			background-color: rgb(246,248,250); 
+			height: 1000px;
+			width: 80%;
+			/*2px给border*/
+			margin-left: 2px; 
+			position: absolute;
+			left: 20%;
+			/*float: right;*/
+		}
+		.main_block .box1 div{
+			position: relative;
+			margin-top: 50px;
+			margin-left:100px;
+		}
+		.main_block .box1 .data{
+			{#margin-left: 200px;#}
+            position: absolute;
+            float: left;
+            left: 350px;
+		}
+		.main_block .box1 .isnormal{
+			color: green;
+			{#margin-left: 200px;#}
+            position: absolute;
+            float: left;
+            left: 500px;
+		}
+		.main_block .box1 .unnormal{
+			color: red;
+			margin-left: 200px;
+		}
+	</style>
+{#    <script src="js/jquery-1.12.4.min.js"></script>#}
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+
+    <script>
+        $(function ()
+        {
+            var interval = null;
+
+            function start() {
+                if(interval = null){
+                    clearInterval(interval);
+                    interval = null;
+                }
+                interval = setInterval(readData, 1000);
+            }
+            function readData() {
+                $.ajax({
+                    url:'/index_check',
+                    type:'post',
+                    dataType:'json',
+                    data:{'com':$("#t1").val()}
+                }).done(function (data) {
+                    if(data.res==1){
+                        $('#d1').text(data.d1);
+                        $('#d2').text(data.d2);
+                        $('#d3').text(data.d3);
+                        $('#d4').text(data.d4);
+                        $('#d5').text(data.d5);
+                        $('#d6').text(data.d6);
+                        $('#d7').text(data.d7);}
+                    else {
+                        stop();
+                        alert('没有数据传回,请确认是否输入COM端口!')
+                    }
+                }).fail(function () {
+                    stop();
+                    alert('服务器连接失败,请重新连接!');
+                })
+            }
+            
+            function stop() {
+                clearInterval(interval);
+                interval = null;
+            }
+
+            $('#kaishi').click(function () {
+                start();
+            });
+
+            $('#tingzhi').click(function () {
+                stop();
+            })
+        })
+    </script>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<div class="title">
+		<!-- <div class="logo"> 温室大棚监控系统 </div> -->
+		<!-- 跳转到index -->
+		<a href="/index" class="logo">温室大棚监控系统</a>
+		<div class="user_info"> <a href="/user_info">个人中心</a> </div>
+		<div class="admin"> <a href="/admin">管理员</a> </div>
+	</div>
+	
+	<!-- 左边 -->
+	<div class="left_block">
+		<div class="post_id">请输入COM端口号</div>
+			<input type="text" id='t1' class="COM">
+			<input type="button" class="start" id="kaishi" onclick="start" value="开始">
+			<input type="button" class="end" id="tingzhi" onclick="stop" value="停止">
+		
+	</div>
+
+	<!-- 主窗口 -->
+	<div class="main_block">
+		<div class="box1">
+			<div>      空气湿度(单位:压强/百帕)    <span id="d1" class="data">00</span>    <span class="isnormal">正常</span>     </div>
+			<div>      环境温度(单位:摄氏度)       <span id="d2" class="data">00</span>    <span class="isnormal">正常</span>    </div>
+			<div>      土壤湿度(单位:压强/百帕)     <span id="d3" class="data">00</span>    <span class="isnormal">正常</span>    </div>
+			<div>      PM2.5浓度(单位:微克/立方米)   <span id="d4" class="data">00</span>    <span class="isnormal">正常</span>    </div>
+			<div>	   CO2浓度(单位:ppm)       <span id="d5" class="data">00</span>    <span class="isnormal">正常</span>    </div>
+			<div>      气体浓度(单位:ppm)       <span id="d6" class="data">00</span>    <span class="isnormal">正常</span>   </div>
+			<div>      光照强度(单位:lux)        <span id="d7" class="data">00</span>    <span class="isnormal">正常</span>   </div>
+		</div>
+	</div>
+
+</body>
+</html>

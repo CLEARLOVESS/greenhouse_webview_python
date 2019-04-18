@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>温室大棚监控系统注册页面</title>
+	<style type="text/css">
+        /* 将标签默认的间距设为0   */
+        body,ul,p,h1,h2,h3,h4,h5,h6,dl,dd,input,select,form{
+            margin:0;padding:0;
+        }
+        /* 让h标签继承body内设置的字体大小 */
+        h1,h2,h3,h4,h5,h6{
+            font-size:100%;
+        }
+        /* 去掉默认的项目图标 */
+        ul{
+            list-style:none;
+        }
+        em{
+            font-style:normal;
+        }
+        a{
+            text-decoration:none;
+        }
+		.box1{
+			/*背景颜色*/
+			background-color: rgb(184,229,248);
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: 1;
+			overflow: auto;
+		}
+
+		.box2{
+			/*中间的窗口*/
+			position: absolute;
+			background-color: rgb(255,255,255);
+			left: 50%;
+			margin-left: -200px;
+			margin-top: 150px;
+			margin-bottom: 300px;
+			width: 400px;
+			height: 500px;
+			box-shadow: 0px 0px 5px 1px rgb(178,221,240);
+			border-radius: 2px;
+			z-index: 10;
+		}
+		/*温室大棚*/
+		.box3{
+			font-size:45px;
+			color: rgb(0,132,255);
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 20px;
+		}
+		/*username*/
+		.box4{
+			position: absolute;
+			margin-top: 80px;
+			margin-left: 60px;
+			font-size: 22px;
+			color: grey;
+			width: 275px;
+			text-align: center;
+			border: 0;
+			border-bottom: 1px solid grey;
+			outline: none;
+		}
+		/*password*/
+		.box5{
+			position: absolute;
+			margin-top: 150px;
+			margin-left: 60px;
+			font-size: 22px;
+			color: grey;
+			width: 275px;
+			text-align: center;
+			border: 0;
+			border-bottom: 1px solid grey;
+			outline: none;
+
+		}
+		/*登录*/
+		.box6{
+			position: absolute;
+			margin-top: 220px;
+			margin-left: 70px;
+			font-size: 16px;
+			line-height: 32px;
+			color: white;
+			background-color: rgb(0,119,230);
+			border: 0px;
+			width: 250px;
+			cursor: pointer;
+		}
+		
+		/*注册代表隐私协议*/
+		.box7{
+			position: absolute;
+			margin-top: 380px;
+			margin-left: 90px;
+			font-size: 14px;
+			color: grey;
+		}
+		/*注册*/
+		/*.box8{
+			position: absolute;
+			margin-top: 300px;
+			margin-left: 140px;
+			font-size: 18px;
+			color: rgb(23,117,192);
+		}*/
+		/*文字*/
+		.bottom_text{
+			position: absolute;
+			z-index: 10;
+			left:50%;
+			width: 700px;
+			margin-top: 800px;
+			margin-bottom: 100px;
+			margin-left: -350px;
+			font-size: 14px;
+			color: grey;
+		}
+	</style>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $("#zhuce").click(function () {
+                $.ajax({
+                    url:"/register_check",
+                    type:"post",
+                    dataType:"json",
+                    data:{"username":$("#username").val(), "password":$("#password").val()}
+                }).done(function (data) {
+                    if(data.res==1){
+                        location.href = '/login';
+                    }
+                    else{
+                        alert('注册失败!请重新注册');
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+	<div class="box1">
+		<div class="box2">
+			
+			<div class="box3">温室大棚监控系统</div>
+				<input type="text" class="box4" id="username" placeholder="用户名">
+			
+				<input type="password" class="box5" id="password"  placeholder="密码">
+			
+				<input type="button" class="box6" id="zhuce" value="注册">
+
+			<div class="box7">注册即代表同意--隐私保护协议--</div>
+			
+		</div>
+
+		<div class="bottom_text">专栏 联系我们 注册机构号 2019  ICP 证 110123745 号京公网安备 110108023132010035 号出版物经营许可证</div>
+	</div>
+	
+</body>
+</html>
