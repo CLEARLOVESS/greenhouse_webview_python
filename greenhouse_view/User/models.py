@@ -44,19 +44,19 @@ class Node(models.Model):
 # 节点数据表
 class NodeData(models.Model):
     # 湿度
-    d1 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='湿度(%rh)')
+    d1 = models.CharField(max_length=5, verbose_name='湿度(%rh)')
     # 温度
-    d2 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='温度(℃)')
+    d2 = models.CharField(max_length=5, verbose_name='温度(℃)')
     # 土壤湿度
-    d3 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='土壤湿度(%rh)')
+    d3 = models.CharField(max_length=5, verbose_name='土壤湿度(%rh)')
     # PM2.5
-    d4 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='PM2.5(微克/每立方米)')
+    d4 = models.CharField(max_length=5, verbose_name='PM2.5(微克/每立方米)')
     # CO2
-    d5 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='CO2(ppm)')
+    d5 = models.CharField(max_length=5, verbose_name='CO2(ppm)')
     # 气体浓度
-    d6 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='气体浓度(ppm)')
+    d6 = models.CharField(max_length=5, verbose_name='气体浓度(ppm)')
     # 光照强度
-    d7 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='光照强度(lx)')
+    d7 = models.CharField(max_length=5, verbose_name='光照强度(lx)')
     # 属于哪个com端口
     com = models.CharField(max_length=10, verbose_name='COM端口')
     # 创建时间

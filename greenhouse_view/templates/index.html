@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>温室大棚监控系统首页</title>
-{#	<link rel="stylesheet" type="text/css" href="css/reset.css">#}
 	<style type="text/css">
         /* 将标签默认的间距设为0   */
         body,ul,p,h1,h2,h3,h4,h5,h6,dl,dd,input,select,form{
@@ -78,20 +77,22 @@
 			text-align: center;
 			margin-top: 100px;
 			margin-bottom: 50px;
+
 		}
 		.COM{
-			width: 275px;
+			width: 200px;
 			text-align: center;
 			border: 0px;
 			color: grey;
 			border-bottom: 1px solid grey;
 			outline: none;
 			font-size: 22px;
-			margin-left: 50px;
+			margin-left: 80px;
+
 		}
 		.start{
 			/*开始按钮*/
-			width:250px; 
+			width:200px;
 			cursor: pointer;
 			border: 0;
 			background-color: rgb(23,160,93); 
@@ -100,10 +101,11 @@
 			line-height: 32px;
 			margin-left: 60px;
 			margin-top: 100px;
+
 		}
 		.end{
 			/*结束按钮*/
-			width:250px; 
+			width:200px;
 			cursor: pointer;
 			border: 0;
 			background-color: rgb(221,80,68);
@@ -112,6 +114,7 @@
 			line-height: 32px;
 			margin-left: 60px;
 			margin-top: 100px;
+
 		}
 
 		/*-------------------主窗口-------------------*/
@@ -149,14 +152,12 @@
 			margin-left: 200px;
 		}
 	</style>
-{#    <script src="js/jquery-1.12.4.min.js"></script>#}
-    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <script>
         $(function ()
         {
             var interval = null;
-
             function start() {
                 if(interval = null){
                     clearInterval(interval);
@@ -181,7 +182,7 @@
                         $('#d7').text(data.d7);}
                     else {
                         stop();
-                        alert('没有数据传回,请确认是否输入COM端口!')
+                        alert('没有数据传回,请确认是否输入正确COM端口!')
                     }
                 }).fail(function () {
                     stop();

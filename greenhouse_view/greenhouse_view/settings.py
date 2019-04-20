@@ -25,7 +25,7 @@ SECRET_KEY = '=8g!^fv=1pw^l0f1a2viz3qxxro6_7iy9!)(e7vefxq9%p#7ps'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -107,6 +107,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATIC_ROOT = r'E:\Envs\django1.8\Lib\site-packages\django\contrib\admin\static'
+
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
