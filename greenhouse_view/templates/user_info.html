@@ -83,6 +83,13 @@
 			border-radius: 5px;
 			border: 1px solid grey;
 		}
+
+        {#信息--username--password#}
+        .box1{
+            position: absolute;
+            float: left;
+            left: 25%;
+        }
 	</style>
 </head>
 
@@ -96,10 +103,10 @@
 	</div>
 
 	<div class="user">
-		<div>用户名--         <span>{{ username }}</span>         </div>
-		<div>密码--         <span>{{ password }}</span>     </div>
-		<div>土地--        <span>1</span>            </div>
-		<div>节点--          <span>1</span>           </div>
+		<div>用户名--         <span class="box1">{{ username }}</span>         </div>
+		<div>密码--         <span class="box1">{{ password }}</span>     </div>
+		<div>土地--        <span class="box1">1</span>            </div>
+		<div>节点--          <span class="box1">1</span>           </div>
 
 		<a href="/change_password" class="change_password">修改密码</a>
 	</div>

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=8g!^fv=1pw^l0f1a2viz3qxxro6_7iy9!)(e7vefxq9%p#7ps'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', ]
 
@@ -107,6 +107,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = r'E:\Envs\django1.8\Lib\site-packages\django\contrib\admin\static'
+STATIC_ROOT = '%s' % os.path.join(BASE_DIR, 'base_static')
 
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
